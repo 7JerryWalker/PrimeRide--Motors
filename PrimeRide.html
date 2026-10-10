@@ -1,0 +1,500 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="Explore quality cars, transparent prices and trusted deals with PrimeRide Motors Ghana.">
+<title>PrimeRide Motors | Drive Your Next Chapter</title>
+
+<style>
+:root {
+  --gold: #f5b900;
+  --black: #080808;
+  --panel: #141414;
+  --white: #ffffff;
+  --muted: #aaaaaa;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--black);
+  color: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
+}
+a { color: inherit; text-decoration: none; }
+button, input, select { font: inherit; }
+header {
+  padding: 15px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  border-bottom: 1px solid #292929;
+  position: sticky;
+  top: 0;
+  background: #080808f5;
+  z-index: 10;
+}
+.brand {
+  font-size: 21px;
+  font-weight: 900;
+  font-style: italic;
+}
+.brand span { color: var(--gold); }
+nav { display: flex; gap: 20px; font-size: 14px; }
+nav a:hover { color: var(--gold); }
+.btn {
+  display: inline-block;
+  background: var(--gold);
+  color: #080808;
+  border: none;
+  padding: 12px 17px;
+  border-radius: 5px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.hero {
+  padding: 80px 6%;
+  min-height: 430px;
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(90deg, #080808 5%, #080808e8 48%, #08080865),
+    url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1600&q=85")
+    center/cover;
+}
+.hero-content { max-width: 650px; }
+.eyebrow {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+h1 {
+  font-size: clamp(38px, 7vw, 68px);
+  line-height: 1.04;
+  margin: 16px 0;
+}
+h1 span { color: var(--gold); }
+.hero p { color: #d0d0d0; line-height: 1.7; max-width: 470px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 25px; }
+.outline-btn {
+  padding: 12px 17px;
+  border: 1px solid #777;
+  border-radius: 5px;
+}
+section { padding: 55px 6%; }
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+h2 { margin: 8px 0; font-size: clamp(25px, 4vw, 36px); }
+.muted { color: var(--muted); line-height: 1.6; }
+.filters {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+.filters input, .filters select {
+  width: 100%;
+  background: #171717;
+  color: white;
+  border: 1px solid #383838;
+  border-radius: 5px;
+  padding: 13px;
+  min-width: 0;
+}
+.car-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.car-card {
+  background: var(--panel);
+  border: 1px solid #292929;
+  border-radius: 9px;
+  overflow: hidden;
+  transition: transform .2s, border-color .2s;
+}
+.car-card:hover { transform: translateY(-4px); border-color: var(--gold); }
+.car-image {
+  width: 100%;
+  height: 205px;
+  object-fit: cover;
+  display: block;
+  background: #222;
+}
+.car-info { padding: 17px; }
+.car-info h3 { margin: 0 0 8px; font-size: 19px; }
+.price { color: var(--gold); font-size: 23px; font-weight: 900; }
+.specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 13px 0;
+}
+.specs span {
+  background: #252525;
+  color: #ddd;
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-size: 12px;
+}
+.car-info .btn { display: block; text-align: center; margin-top: 15px; }
+.status {
+  display: inline-block;
+  color: var(--gold);
+  border: 1px solid #705900;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  margin-bottom: 12px;
+}
+.empty { padding: 35px 0; text-align: center; color: var(--muted); }
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.trust-item {
+  background: var(--panel);
+  padding: 23px 15px;
+  text-align: center;
+  border-radius: 8px;
+}
+.trust-item .symbol { color: var(--gold); font-size: 29px; }
+.trust-item h3 { font-size: 15px; }
+.trust-item p { color: var(--muted); font-size: 13px; line-height: 1.5; }
+.contact {
+  background: linear-gradient(135deg, #201a06, #111);
+  border: 1px solid #574500;
+  border-radius: 10px;
+  padding: 35px;
+  text-align: center;
+}
+.contact p { color: #ccc; line-height: 1.7; }
+footer {
+  border-top: 1px solid #292929;
+  padding: 28px 6%;
+  color: var(--muted);
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.8;
+}
+footer strong { color: var(--gold); }
+@media(max-width: 850px) {
+  .car-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .trust-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media(max-width: 520px) {
+  header { padding: 14px 4%; }
+  .brand { font-size: 17px; }
+  nav { gap: 10px; font-size: 12px; }
+  .header-contact { display: none; }
+  .hero { padding: 65px 5%; min-height: 400px; }
+  section { padding: 42px 5%; }
+  .car-grid { grid-template-columns: 1fr; }
+  .car-image { height: 225px; }
+  .filters { grid-template-columns: 1fr 1fr; }
+  .contact { padding: 25px 16px; }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <a class="brand" href="#home">PRIME<span>RIDE</span> MOTORS</a>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#cars">Cars</a>
+    <a href="#about">About</a>
+  </nav>
+  <a class="btn header-contact" href="#contact">Contact Us</a>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="eyebrow">Quality Cars • Trusted Deals</div>
+    <h1>Drive Your <span>Next Chapter.</span></h1>
+    <p>
+      Discover your next car with PrimeRide Motors.
+      Explore vehicle listings, compare prices and enquire
+      directly about your preferred car.
+    </p>
+    <div class="hero-actions">
+      <a href="#cars" class="btn">Explore Available Cars</a>
+      <a href="#contact" class="outline-btn">Talk to Us</a>
+    </div>
+  </div>
+</section>
+
+<section id="cars">
+  <div class="section-heading">
+    <div>
+      <div class="eyebrow">Find Your Perfect Ride</div>
+      <h2>Available Cars</h2>
+      <div class="muted">Browse our listings and enquire for details.</div>
+    </div>
+    <div class="muted" id="car-count">Loading listings...</div>
+  </div>
+
+  <div class="filters">
+    <input id="search" type="search"
+      placeholder="Search Toyota, Benz, SUV..."
+      aria-label="Search cars">
+    <select id="brand" aria-label="Filter by brand">
+      <option value="">All brands</option>
+    </select>
+    <select id="body" aria-label="Filter by body type">
+      <option value="">All body types</option>
+      <option value="Sedan">Sedan</option>
+      <option value="SUV">SUV</option>
+      <option value="Hatchback">Hatchback</option>
+      <option value="Pickup">Pickup</option>
+      <option value="Coupe">Coupe</option>
+    </select>
+    <select id="sort" aria-label="Sort by price">
+      <option value="newest">Newest year</option>
+      <option value="low">Price: low to high</option>
+      <option value="high">Price: high to low</option>
+    </select>
+  </div>
+
+  <div class="car-grid" id="car-grid"></div>
+  <div class="empty" id="empty" hidden>
+    No cars match your search. Try another filter.
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-heading">
+    <div>
+      <div class="eyebrow">The PrimeRide Difference</div>
+      <h2>Your Journey, Our Priority</h2>
+      <p class="muted">A straightforward way to discover your next vehicle.</p>
+    </div>
+  </div>
+  <div class="trust-grid">
+    <div class="trust-item">
+      <div class="symbol">🚘</div>
+      <h3>Quality Cars</h3>
+      <p>Explore vehicle details and condition before enquiring.</p>
+    </div>
+    <div class="trust-item">
+      <div class="symbol">🤝</div>
+      <h3>Trusted Deals</h3>
+      <p>Ask questions and confirm details before making payment.</p>
+    </div>
+    <div class="trust-item">
+      <div class="symbol">✓</div>
+      <h3>Secure Process</h3>
+      <p>Verify ownership and vehicle documents before buying.</p>
+    </div>
+    <div class="trust-item">
+      <div class="symbol">◉</div>
+      <h3>Drive Confidence</h3>
+      <p>Request an inspection and arrange a viewing.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact">
+    <div class="eyebrow">Ready for Your Next Ride?</div>
+    <h2>Let's Find Your Car.</h2>
+    <p>Seen something you like? Contact PrimeRide Motors
+       to discuss pricing, availability and viewing arrangements.</p>
+    <a id="main-whatsapp" class="btn" href="#" target="_blank"
+       rel="noopener">Chat With Us on WhatsApp</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="brand">PRIME<span>RIDE</span> MOTORS</div>
+  <div>Drive Your Next Chapter.</div>
+  <div>Quality Cars • Trusted Deals • Drive Confidence</div>
+  <p>© <span id="year"></span> PrimeRide Motors. All rights reserved.</p>
+  <p>Prices and availability must be confirmed with the seller.</p>
+</footer>
+
+<script>
+// 1. CHANGE THIS to your WhatsApp number.
+// Ghana example: 233241234567 (no +, spaces or leading zero).
+const WHATSAPP_NUMBER = "233508122850";
+
+// 2. Replace these EXAMPLE listings with your real cars.
+// Price is in Ghana cedis. Do not publish false prices.
+const cars = [
+  {
+    id: 1,
+    name: "Toyota Camry",
+    year: 2018,
+    brand: "Toyota",
+    body: "Sedan",
+    price: 185000,
+    mileage: "85,000 km",
+    transmission: "Automatic",
+    condition: "Ghanaian Used",
+    image: "storage/emulated/0/Download/X/HUCEH2TWcAAtu4F.jpg",
+    available: true
+  },
+  {
+    id: 2,
+    name: "Mercedes-Benz C-Class",
+    year: 2019,
+    brand: "Mercedes-Benz",
+    body: "Sedan",
+    price: 260000,
+    mileage: "62,000 km",
+    transmission: "Automatic",
+    condition: "Foreign Used",
+    image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=900&q=80",
+    available: true
+  },
+  {
+    id: 3,
+    name: "Honda CR-V",
+    year: 2017,
+    brand: "Honda",
+    body: "SUV",
+    price: 195000,
+    mileage: "90,000 km",
+    transmission: "Automatic",
+    condition: "Foreign Used",
+    image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=900&q=80",
+    available: true
+  }
+];
+
+// Format prices in Ghana cedis.
+function money(amount) {
+  return "GH₵ " + Number(amount).toLocaleString("en-GH");
+}
+
+function whatsappLink(message) {
+  return "https://wa.me/" + WHATSAPP_NUMBER +
+    "?text=" + encodeURIComponent(message);
+}
+
+function renderCars() {
+  const query = document.getElementById("search").value.toLowerCase().trim();
+  const brand = document.getElementById("brand").value;
+  const body = document.getElementById("body").value;
+  const sort = document.getElementById("sort").value;
+
+  let results = cars.filter(car => {
+    const matchesSearch =
+      (car.name + " " + car.brand + " " + car.year + " " +
+       car.body + " " + car.condition).toLowerCase().includes(query);
+
+    return matchesSearch &&
+      (!brand || car.brand === brand) &&
+      (!body || car.body === body);
+  });
+
+  if (sort === "low") results.sort((a, b) => a.price - b.price);
+  if (sort === "high") results.sort((a, b) => b.price - a.price);
+  if (sort === "newest") results.sort((a, b) => b.year - a.year);
+
+  document.getElementById("car-count").textContent =
+    results.length + (results.length === 1 ? " car found" : " cars found");
+
+  const grid = document.getElementById("car-grid");
+  const empty = document.getElementById("empty");
+  grid.replaceChildren();
+  empty.hidden = results.length !== 0;
+
+  results.forEach(car => {
+    const card = document.createElement("article");
+    card.className = "car-card";
+
+    const img = document.createElement("img");
+    img.className = "car-image";
+    img.src = car.image;
+    img.alt = car.year + " " + car.name;
+    img.loading = "lazy";
+    img.onerror = () => {
+      img.style.display = "none";
+    };
+
+    const info = document.createElement("div");
+    info.className = "car-info";
+
+    const status = document.createElement("div");
+    status.className = "status";
+    status.textContent = car.available ? "ENQUIRE FOR AVAILABILITY" : "SOLD";
+
+    const title = document.createElement("h3");
+    title.textContent = car.year + " " + car.name;
+
+    const price = document.createElement("div");
+    price.className = "price";
+    price.textContent = money(car.price);
+
+    const specs = document.createElement("div");
+    specs.className = "specs";
+
+    [car.body, car.mileage, car.transmission, car.condition].forEach(value => {
+      const tag = document.createElement("span");
+      tag.textContent = value;
+      specs.appendChild(tag);
+    });
+
+    const link = document.createElement("a");
+    link.className = "btn";
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.href = whatsappLink(
+      "Hello PrimeRide Motors, I am interested in the " +
+      car.year + " " + car.name + ". Listed price: " +
+      money(car.price) + ". Is it available?"
+    );
+    link.textContent = car.available ? "Enquire on WhatsApp" : "Ask About Similar Cars";
+
+    if (!car.available) status.textContent = "SOLD";
+    if (!car.available) link.href = whatsappLink(
+      "Hello PrimeRide Motors, I am interested in a car similar to the " +
+      car.year + " " + car.name + ". Can you help?"
+    );
+
+    info.append(status, title, price, specs, link);
+    card.append(img, info);
+    grid.appendChild(card);
+  });
+}
+
+// Populate the brand filter.
+[...new Set(cars.map(car => car.brand))].sort().forEach(name => {
+  const option = document.createElement("option");
+  option.value = name;
+  option.textContent = name;
+  document.getElementById("brand").appendChild(option);
+});
+
+["search", "brand", "body", "sort"].forEach(id => {
+  document.getElementById(id).addEventListener("input", renderCars);
+  document.getElementById(id).addEventListener("change", renderCars);
+});
+
+document.getElementById("main-whatsapp").href = whatsappLink(
+  "Hello PrimeRide Motors, I would like to enquire about your available cars."
+);
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+renderCars();
+</script>
+</body>
+</html>
